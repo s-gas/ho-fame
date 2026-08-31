@@ -10,6 +10,7 @@ router.get("/", async (_req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  console.log(req.body);
   const entry = await recipesService.createRecipe(req.body);
   return res.status(201).json(entry);
 })

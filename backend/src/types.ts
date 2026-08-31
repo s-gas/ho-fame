@@ -1,3 +1,3 @@
-export interface Recipe {
+export interface RecipeInput {
   name: string;
 };

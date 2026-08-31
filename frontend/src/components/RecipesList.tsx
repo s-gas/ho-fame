@@ -11,9 +11,9 @@ const RecipesList = ({ recipes, setRecipes }: RecipesListProps) => {
   useEffect(() => {
     const getAll = async () => {
       try {
-        const recipes = await recipesService.getAll();
-        console.log(recipes);
-        setRecipes(recipes);
+        const recipeList = await recipesService.getAll();
+        console.log(recipeList);
+        setRecipes(recipeList);
       } catch (error) {
         console.log(error);
       }
