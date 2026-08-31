@@ -6,7 +6,10 @@ const App = () => {
   const [recipes, setRecipes] = useState(Array<Recipe>);
 
   return (
-    <RecipesList recipes={recipes} setRecipes={setRecipes} />
+    <>
+      <h1>ho-fame</h1>
+      <RecipesList recipes={recipes} setRecipes={setRecipes} />
+    </>
   )
 }
 
