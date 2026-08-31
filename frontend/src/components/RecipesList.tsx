@@ -12,7 +12,6 @@ const RecipesList = ({ recipes, setRecipes }: RecipesListProps) => {
     const getAll = async () => {
       try {
         const recipeList = await recipesService.getAll();
-        console.log(recipeList);
         setRecipes(recipeList);
       } catch (error) {
         console.log(error);
