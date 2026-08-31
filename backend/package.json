@@ -5,9 +5,8 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "dev": "tsx --watch src/index.ts",
-    "db": "tsx src/schema.ts",
-    "db:test": "NODE_ENV=test tsx src/schema.ts"
+    "dev": "tsx src/schema.ts && tsx --watch src/index.ts",
+    "dev:test": "NODE_ENV=test tsx src/schema.ts && NODE_ENV=test tsx --watch src/index.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",
