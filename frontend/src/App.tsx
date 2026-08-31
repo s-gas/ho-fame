@@ -1,25 +1,12 @@
-import { useEffect } from "react";
-import recipesService from "./services/recipes";
+import { useState } from "react";
+import type { Recipe } from "./types";
+import RecipesList from "./components/RecipesList";
 
 const App = () => {
-
-  useEffect(() => {
-    const getAll = async () => {
-      try {
-        const recipes = await recipesService.getAll();
-        console.log(recipes);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    getAll();
-  }, []);
+  const [recipes, setRecipes] = useState(Array<Recipe>);
 
   return (
-    <>
-      <p>ho-fame</p>
-    </>
+    <RecipesList recipes={recipes} setRecipes={setRecipes} />
   )
 }
 

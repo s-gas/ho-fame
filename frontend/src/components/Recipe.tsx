@@ -1,7 +1,11 @@
-const Recipe = () => {
+interface RecipeProps {
+  name: string;
+};
+
+const Recipe = ({ name }: RecipeProps) => {
   return (
     <div className="border-b py-2">
-      <h2>recipe-name</h2>
+      <h2>{name}</h2>
     </div>
   );
 };
