@@ -18,4 +18,14 @@ const createSchema = async () => {
   }
 }
 
-createSchema();
+const resetSchema = async () => {
+  try {
+    await pool.query("DROP SCHEMA IF EXISTS public CASCADE; CREATE SCHEMA public;");
+    console.log("resetSchema: success")
+  } catch (err) {
+    console.log("resetSchema: failure: ", err);
+  }
+}
+
+if (process.env.NODE_ENV === "test") await resetSchema();
+await createSchema();
