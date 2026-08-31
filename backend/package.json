@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "dev": "tsx --watch src/index.ts"
+    "dev": "tsx --watch src/index.ts",
+    "db": "tsx src/schema.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",
