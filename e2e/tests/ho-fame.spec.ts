@@ -15,11 +15,13 @@ test.describe("ho-fame", async () => {
     await expect(noRecipes).toBeVisible();
   });
 
-  test("does not display 'No recipes' after adding a recipe", async ({ page }) => {
+  test("displays recipe name after adding a recipe", async ({ page }) => {
     await page.getByLabel("name").fill("pizza");
     const noRecipes = page.getByText("No recipes");
     const submitButton = page.getByRole("button", { name: "create" });
     await submitButton.click();
     await expect(noRecipes).not.toBeVisible();
-  })
+    const recipe = page.getByText("pizza");
+    await expect(recipe).toBeVisible();
+  });
 });
