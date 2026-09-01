@@ -1,7 +1,8 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, request } from '@playwright/test';
 
 test.describe("ho-fame", async () => {
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ page, request }) => {
+    await request.post('http://localhost:3000/api/reset');
     await page.goto('http://localhost:5173');
   });
 
@@ -13,4 +14,12 @@ test.describe("ho-fame", async () => {
     const noRecipes = page.getByText("No recipes");
     await expect(noRecipes).toBeVisible();
   });
+
+  test("does not display 'No recipes' after adding a recipe", async ({ page }) => {
+    await page.getByLabel("name").fill("pizza");
+    const noRecipes = page.getByText("No recipes");
+    const submitButton = page.getByRole("button", { name: "create" });
+    await submitButton.click();
+    await expect(noRecipes).not.toBeVisible();
+  })
 });

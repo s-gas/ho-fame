@@ -11,6 +11,12 @@ const createRecipe = async (recipe: RecipeInput) => {
     INSERT INTO recipes (name) VALUES ($1) RETURNING *;
   `, [recipe.name]);
   return result.rows[0];
-}
+};
 
-export default { getAll, createRecipe };
+const reset = async () => {
+  await pool.query(`
+    TRUNCATE TABLE recipes RESTART IDENTITY CASCADE;
+  `);
+};
+
+export default { getAll, createRecipe, reset };
