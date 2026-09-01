@@ -38,3 +38,7 @@ DB_USER=<user>
 ```
 
 `DB_NAME` must match the name of the PostgreSQL database you created for the application.
+
+### How to create schema
+
+From `backend`, simply run the script `npm run schema`.
