@@ -7,12 +7,14 @@
   "scripts": {
     "dev": "tsx --watch src/index.ts",
     "dev:test": "NODE_ENV=test tsx --watch src/index.ts",
-    "schema": "node src/schema.ts"
+    "schema": "node src/schema.ts",
+    "schema:test": "NODE_ENV=test node src/schema.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "pg": "^8.23.0"
+    "pg": "^8.23.0",
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
