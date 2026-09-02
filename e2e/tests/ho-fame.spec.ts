@@ -23,4 +23,13 @@ test.describe("ho-fame", async () => {
     const recipe = page.getByText("pizza");
     await expect(recipe).toBeVisible();
   });
+
+  test("displays error message with empty name input", async ({ page }) => {
+    await page.getByRole("button", { name: "new" }).click();
+    await page.getByLabel("Name").fill("");
+    const submitButton = page.getByRole("button", { name: "create" });
+    await submitButton.click();
+    const errorMessage = page.getByText("Name field cannot be empty");
+    await expect(errorMessage).toBeVisible();
+  })
 });
