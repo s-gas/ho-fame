@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import NewRecipeForm from "../components/NewRecipeForm";
 import type { Recipe } from "../types";
 
@@ -6,8 +7,15 @@ interface NewProps {
 };
 
 const New = ({ setRecipes }: NewProps) => {
+
+  const navigate = useNavigate();
+
   return (
-    <NewRecipeForm setRecipes={setRecipes} />
+    <>
+      <button onClick={() => navigate('/')}>Back</button>
+      <h1>Create a new recipe</h1>
+      <NewRecipeForm setRecipes={setRecipes} />
+    </>
   )
 }
 

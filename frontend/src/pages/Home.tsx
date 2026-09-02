@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import RecipesList from "../components/RecipesList";
 import type { Recipe } from "../types";
 
@@ -7,11 +8,14 @@ interface HomeProps {
 };
 
 const Home = ({recipes, setRecipes}: HomeProps) => {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <h1>ho-fame</h1>
       <RecipesList recipes={recipes} setRecipes={setRecipes} />
-      <button>New</button>
+      <button onClick={() => navigate('/new')}>New</button>
     </>
   )
 };
