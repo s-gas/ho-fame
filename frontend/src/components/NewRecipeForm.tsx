@@ -10,6 +10,7 @@ interface NewRecipeFormProps {
 
 const NewRecipeForm = ({ setRecipes }: NewRecipeFormProps) => {
   const [name, setName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -21,7 +22,18 @@ const NewRecipeForm = ({ setRecipes }: NewRecipeFormProps) => {
       setName("");
       navigate("/");
     } catch (error) {
-      console.log(error);
+      if (error instanceof Error) {
+        if (error.message.includes("400")) {
+          setErrorMessage("Name field cannot be empty");
+        } else {
+          setErrorMessage("Something went wrong");
+        }
+      } else {
+        setErrorMessage("Something went wrong");
+      }
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 2000);
     }
   }
 
@@ -30,13 +42,16 @@ const NewRecipeForm = ({ setRecipes }: NewRecipeFormProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <label className="flex gap-2">
-        Name
-        <input onChange={handleChange} className="border-b"></input>
-      </label>
-      <Button type="submit">Create</Button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <label className="flex gap-2">
+          Name
+          <input onChange={handleChange} className="border-b"></input>
+        </label>
+        <Button type="submit">Create</Button>
+      </form>
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+    </div>
   )
 }
 
