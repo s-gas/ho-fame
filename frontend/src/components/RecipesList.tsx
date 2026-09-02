@@ -26,9 +26,9 @@ const RecipesList = ({ recipes, setRecipes }: RecipesListProps) => {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-2">
       {recipes.map((recipe) => <p key={recipe.id}>{recipe.name}</p>)}
-    </>
+    </div>
   )
 }
 

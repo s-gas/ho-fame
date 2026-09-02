@@ -15,11 +15,13 @@ const Home = ({recipes, setRecipes}: HomeProps) => {
 
   return (
     <Layout>
-      <div className="flex justify-between">
-        <h1>Recipes</h1>
-        <Button onClick={() => navigate('/new')}>New</Button>
+      <div className="flex flex-col gap-4">
+        <div className="flex justify-between">
+          <h1 className="text-xl">Recipes</h1>
+          <Button onClick={() => navigate('/new')}>New</Button>
+        </div>
+        <RecipesList recipes={recipes} setRecipes={setRecipes} />
       </div>
-      <RecipesList recipes={recipes} setRecipes={setRecipes} />
     </Layout>
   )
 };

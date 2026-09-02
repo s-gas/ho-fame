@@ -30,10 +30,10 @@ const NewRecipeForm = ({ setRecipes }: NewRecipeFormProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        name
-        <input onChange={handleChange}></input>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <label className="flex gap-2">
+        Name
+        <input onChange={handleChange} className="border-b"></input>
       </label>
       <Button type="submit">Create</Button>
     </form>

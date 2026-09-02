@@ -14,9 +14,15 @@ const New = ({ setRecipes }: NewProps) => {
 
   return (
     <Layout>
-      <Button onClick={() => navigate('/')}>Back</Button>
-      <h1>Create a new recipe</h1>
-      <NewRecipeForm setRecipes={setRecipes} />
+      <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-3 items-center justify-items-start">
+          <Button onClick={() => navigate('/')}>Back</Button>
+          <h1 className="text-xl justify-self-center">Create a new recipe</h1>
+        </div>
+        <div className="self-center">
+          <NewRecipeForm setRecipes={setRecipes} />
+        </div>
+      </div>
     </Layout>
   )
 }
