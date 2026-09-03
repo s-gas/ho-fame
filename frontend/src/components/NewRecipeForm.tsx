@@ -59,7 +59,7 @@ const NewRecipeForm = ({ setRecipes }: NewRecipeFormProps) => {
           Name:
           <input onChange={handleNameChange} className="border-b"></input>
         </label>
-        <label className="flex gap-2">
+        <label className="flex justify-between">
           URL:
           <input onChange={handleUrlChange} className="border-b"></input>
         </label>
