@@ -3,7 +3,8 @@ import pool from "./db.ts";
 const schema = `
   CREATE TABLE IF NOT EXISTS recipes (
     id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL
+    name TEXT NOT NULL,
+    url TEXT
   );
 `;
 

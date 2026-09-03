@@ -10,6 +10,7 @@ interface NewRecipeFormProps {
 
 const NewRecipeForm = ({ setRecipes }: NewRecipeFormProps) => {
   const [name, setName] = useState("");
+  const [url, setUrl] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
@@ -17,9 +18,15 @@ const NewRecipeForm = ({ setRecipes }: NewRecipeFormProps) => {
   const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const entry = await recipesService.createRecipe({ name: name });
+      let entry;
+      if (url) {
+        entry = await recipesService.createRecipe({ name: name, url: url });
+      } else {
+        entry = await recipesService.createRecipe({ name: name });
+      }
       setRecipes((recipes) => recipes.concat(entry));
       setName("");
+      setUrl("");
       navigate("/");
     } catch (error) {
       if (error instanceof Error) {
@@ -37,16 +44,24 @@ const NewRecipeForm = ({ setRecipes }: NewRecipeFormProps) => {
     }
   }
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
+  }
+
+  const handleUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUrl(event.target.value);
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <label className="flex gap-2">
-          Name
-          <input onChange={handleChange} className="border-b"></input>
+          Name:
+          <input onChange={handleNameChange} className="border-b"></input>
+        </label>
+        <label className="flex gap-2">
+          URL:
+          <input onChange={handleUrlChange} className="border-b"></input>
         </label>
         <Button type="submit">Create</Button>
       </form>
